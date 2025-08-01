@@ -1,0 +1,21 @@
+{
+  "name": "moonphase",
+  "version": "1.0.0",
+  "description": "A generative artwork",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "fxhash update",
+    "update": "fxhash update",
+    "start": "fxhash dev",
+    "build": "fxhash build"
+  },
+  "devDependencies": {
+    "@fxhash/cli": "latest",
+    "fxhash": "latest",
+	"eslint": "latest"
+  },
+  "dependencies": {
+    "p5": "^2.0.0"
+  },
+  "type": "module"
+}
