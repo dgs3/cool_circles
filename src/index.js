@@ -8,6 +8,8 @@ const sketch = (p) => {
   // Graphics object used to draw everything.
   let pg;
   let ellipses = [];
+  let scaleFactorMin = 0.0;
+  let scaleFactorMax = 1.0  ;
 
   p.setup = () => {
     p.randomSeed($fx.rand() * 1000000);
@@ -24,7 +26,6 @@ const sketch = (p) => {
     pg = p.createGraphics(w, h);
     // Allows for crisper images on retina displays.
     pg.pixelDensity(2);
-    console.log(p.random(0, 100));
     // Initialize a collection of wandering ellipses
     const count = 10;
     const neonPalette = [
@@ -36,9 +37,11 @@ const sketch = (p) => {
       { r: 80, g: 200, b: 255 }   // electric blue
     ];
     for (let i = 0; i < count; i++) {
+      const scaleFactor = p.random(scaleFactorMin, scaleFactorMax);
       const size = 100 - (10 * i);
-      const color = neonPalette[i % neonPalette.length];
-      ellipses.push(new WanderingEllipse(size, size, 0, 0, color));
+      const color = p.random(neonPalette);
+      const strokeWeight = p.random();
+      ellipses.push(new WanderingEllipse(size, size, 0, 0, scaleFactor, color, strokeWeight));
     }
   };
 
