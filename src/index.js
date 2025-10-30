@@ -10,6 +10,7 @@ const sketch = (p) => {
   let ellipses = [];
   let scaleFactorMin = 0.0;
   let scaleFactorMax = 1.0  ;
+  let drawCenterDot = false;
 
   p.setup = () => {
     p.randomSeed($fx.rand() * 1000000);
@@ -34,15 +35,28 @@ const sketch = (p) => {
       { r: 255, g: 20, b: 147 },  // deep pink
       { r: 255, g: 0, b: 255 },   // magenta
       { r: 255, g: 255, b: 0 },   // yellow
-      { r: 80, g: 200, b: 255 }   // electric blue
+      { r: 80, g: 200, b: 255 },  // electric blue
+      { r: 255, g: 95, b: 31 },   // neon orange
+      { r: 255, g: 59, b: 59 },   // neon red
+      { r: 191, g: 0, b: 255 },   // neon purple
+      { r: 204, g: 255, b: 0 },   // neon lime
+      { r: 0, g: 255, b: 180 },   // neon turquoise
+      { r: 0, g: 150, b: 255 },   // neon blue
+      { r: 127, g: 255, b: 0 },   // chartreuse
+      { r: 255, g: 127, b: 80 },  // neon coral
+      { r: 255, g: 0, b: 127 },   // hot pink
+      { r: 255, g: 215, b: 0 }    // neon gold
     ];
     for (let i = 0; i < count; i++) {
       const scaleFactor = p.random(scaleFactorMin, scaleFactorMax);
       const size = 100 - (10 * i);
       const color = p.random(neonPalette);
       const strokeWeight = p.random();
-      ellipses.push(new WanderingEllipse(size, size, 0, 0, scaleFactor, color, strokeWeight));
+      const maxSizeFactor = p.random(1.0, 1.2);
+      ellipses.push(new WanderingEllipse(size, size, 0, 0, maxSizeFactor, scaleFactor, color, strokeWeight));
     }
+    // Decide once whether to draw the center dot
+    drawCenterDot = p.random([false, true]);
   };
 
   p.draw = () => {
@@ -57,8 +71,15 @@ const sketch = (p) => {
     pg.translate(pg.width / 2, pg.height / 2);
     // Scale the sketch up/down to allow for dimensionless.
     pg.scale(scaleUnit);
+
     for (let i = 0; i < ellipses.length; i++) {
       ellipses[i].draw(pg);
+    }
+    // Optionally draw a small black dot in the center
+    if (drawCenterDot) {
+      pg.noStroke();
+      pg.fill(0);
+      pg.ellipse(0, 0, 2, 2);
     }
     pg.pop();
     // Draw the graphics buffer to screen.
