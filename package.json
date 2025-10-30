@@ -1,5 +1,5 @@
 {
-  "name": "moonphase",
+  "name": "cool circles",
   "version": "1.0.0",
   "description": "A generative artwork",
   "license": "MIT",
@@ -15,7 +15,7 @@
 	"eslint": "latest"
   },
   "dependencies": {
-    "p5": "^2.0.0"
+    "p5": "1.7.0"
   },
   "type": "module"
 }
