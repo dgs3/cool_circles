@@ -9,7 +9,7 @@ const sketch = (p) => {
   let pg;
   let ellipses = [];
   let scaleFactorMin = 0.0;
-  let scaleFactorMax = 1.0  ;
+  let scaleFactorMax = 1.0;
   let drawCenterDot = false;
 
   p.setup = () => {
