@@ -1,7 +1,4 @@
-# fxhash Template
-Template git repo that includes boilerplate for projects.
+# Cool Concentric Circles
+Sketch that has some concentric circles with random colors, movement, etc.
 
-Includes:
-
-    * project infra (i.e. Makefile, common deps)
-    * Dimensionless sketch skeleton built with p5
+Uses fxhash, so randomness should be repeatable with a given seed.
