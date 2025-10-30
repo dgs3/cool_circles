@@ -43,6 +43,7 @@ const sketch = (p) => {
   };
 
   p.draw = () => {
+    p.clear();
     // Update ellipse sizes over time
     for (let i = 0; i < ellipses.length; i++) {
       ellipses[i].iterate(p);
