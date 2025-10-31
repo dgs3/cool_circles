@@ -1,4 +1,3 @@
-import p5 from 'p5';
 import WanderingEllipse from './wandering_ellipse.js';
 
 const sketch = (p) => {
